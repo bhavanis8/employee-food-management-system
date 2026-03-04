@@ -4,44 +4,41 @@ import { useNavigate } from "react-router-dom";
 import bgImage from "../assets/corporate-bg.jpg";
 
 function Login() {
+
   const [employeeId, setEmployeeId] = useState("");
+  const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
+
   const navigate = useNavigate();
 
-  const handleLogin = async () => {
-    if (!employeeId.trim()) {
-      setMessage("Please enter Employee ID");
-      return;
-    }
+  const employees = [
+    { id: "EMP001", password: "1234" },
+    { id: "EMP002", password: "abcd" },
+    { id: "EMP003", password: "pass123" }
+  ];
 
-    try {
-      const response = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ employeeId })
-      });
+  const handleLogin = () => {
 
-      const data = await response.json();
+    const user = employees.find(
+      emp => emp.id === employeeId && emp.password === password
+    );
 
-      if (data.success) {
-        navigate("/dashboard");
-      } else {
-        setMessage(data.message);
-      }
-
-    } catch (error) {
-      setMessage("Server error");
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      setMessage("Invalid Employee ID or Password");
     }
   };
 
   return (
+
     <div
       className="login-container"
       style={{ backgroundImage: `url(${bgImage})` }}
     >
+
       <div className="login-card">
+
         <h1 className="title">Employee Login</h1>
 
         <input
@@ -52,13 +49,24 @@ function Login() {
           className="input-field"
         />
 
+        <input
+          type="password"
+          placeholder="Enter Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="input-field"
+        />
+
         <button onClick={handleLogin} className="login-button">
           Login
         </button>
 
-        <p style={{ color: "red", marginTop: "10px" }}>{message}</p>
+        <p style={{color:"red"}}>{message}</p>
+
       </div>
+
     </div>
+
   );
 }
 

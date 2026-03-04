@@ -1,0 +1,37 @@
+.home-container {
+
+  height: 100vh;
+  background-image: url("../assets/corporate-bg.jpg");
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+}
+
+.home-container h1{
+  color: white;
+  margin-bottom: 40px;
+}
+
+.button-group button{
+
+  padding: 12px 30px;
+  margin: 10px;
+  font-size: 16px;
+
+  border-radius: 6px;
+  border: none;
+
+  background-color: #2c3e50;
+  color: white;
+  cursor: pointer;
+}
+
+.button-group button:hover{
+  background-color: #34495e;
+}
