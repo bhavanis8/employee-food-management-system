@@ -1,27 +1,45 @@
-function AdminDashboard(){
+import "./AdminDashboard.css";
+import { useNavigate } from "react-router-dom";
 
-  return(
+function AdminDashboard() {
 
-    <div style={{padding:"40px"}}>
+  const navigate = useNavigate();
 
-      <h1>Admin Dashboard</h1>
+  return (
 
-      <hr/>
+    <div className="admin-dashboard">
 
-      <h2>Food Count Today</h2>
+      <button className="back-btn" onClick={() => navigate("/")}>
+        ← Back
+      </button>
 
-      <h3>Morning</h3>
-      <p>Idli → 25</p>
-      <p>Dosa → 18</p>
-      <p>Upma → 12</p>
+      <div className="dashboard-card">
 
-      <h3>Afternoon</h3>
-      <p>Meals → 30</p>
-      <p>Curd Rice → 12</p>
+        <h1>Admin Dashboard</h1>
+
+        <hr />
+
+        <h2>Food Count Today</h2>
+
+        <h3>Morning</h3>
+        <p>Idli → 25</p>
+        <p>Dosa → 18</p>
+        <p>Upma → 12</p>
+
+        <h3>Afternoon</h3>
+        <p>Meals → 30</p>
+        <p>Curd Rice → 12</p>
+
+        <h3>Snacks</h3>
+        <p>juice → 50</p>
+        <p>Buscuits → 82</p>
+
+      </div>
 
     </div>
 
   );
+
 }
 
 export default AdminDashboard;
